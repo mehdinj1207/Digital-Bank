@@ -1,0 +1,21 @@
+h2.section-heading,  .section-heading.h2 {
+    font-size: 2.5rem;
+    margin-top: 0;
+    margin-bottom: 1rem;
+  }
+hr {
+    margin: 1rem 0;
+    color: inherit;
+    background-color: currentColor;
+    border: 0;
+    opacity: 0.25;
+  }
+hr:not([size]) {
+    height: 1px;
+  }
+  
+
+.mx-auto {
+        margin-right: auto ;
+        margin-left: auto ;
+    }    

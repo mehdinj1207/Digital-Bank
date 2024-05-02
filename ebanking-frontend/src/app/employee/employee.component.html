@@ -1,0 +1,78 @@
+<div class="container mt-4">
+    <ng-container *ngIf="employees | async as listEmployees; else failureOrLoading">
+      <div class="card">
+        <div class="card-header bg-primary text-white">Employees</div>
+        <div class="card-body">
+          <!-- Search Form -->
+          <form  >
+            <div class="input-group mb-3">
+              <span class="input-group-text">Keyword</span>
+              <input type="text"  class="form-control">
+              <button class="btn btn-primary" type="submit">
+                <i class="bi bi-search"></i>
+              </button>
+            </div>
+          </form>
+  
+          <!-- Customers Table -->
+          <table class="table table-striped table-hover">
+            <thead class="table-dark">
+              <tr>
+                <th>ID</th>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Age</th>
+                <th>Gender</th>
+                <th>Email</th>
+                <th>Agency</th>
+                <th></th>
+                <th></th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let c of listEmployees.employees">
+                <td>{{c.id}}</td>
+                <td>{{c.firstName}}</td>
+                <td>{{c.lastName}}</td>
+                <td>{{c.age}}</td>
+                <td>{{c.gender}}</td>
+                <td>{{c.email}}</td>
+                <td>{{c.agency.location}}</td>
+                <td>
+                  <button  class="btn btn-danger btn-sm">
+                    <i class="bi bi-trash"></i> Delete
+                  </button>
+                </td>
+                <td>
+                  <button  class="btn btn-success btn-sm">
+                    <i class="bi bi-wallet"></i> Accounts
+                  </button>
+                </td>
+                <td>
+                  <button  class="btn btn-warning btn-sm">
+                    <i class="bi bi-pencil"></i> Update
+                  </button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+          <ul class="nav nav-pills">
+            <li *ngFor="let item of [].constructor(listEmployees.totalPage);let page=index">
+              <a [ngClass]="page==currentPage?'btn btn-primary':'btn btn-outline-primary'" (click)="gotoPage(page)" class="ms-1 mt-1">{{page}}</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </ng-container>
+  
+    <ng-template #failureOrLoading>
+      <div class="card">
+        <div class="card-body">
+          <div *ngIf="errorMsg" class="text-danger">Error Message = {{errorMsg | json}}</div>
+          <div *ngIf="!(errorMsg)" class="text-center">Loading ...</div>
+        </div>
+      </div>
+    </ng-template>
+  </div>
+  

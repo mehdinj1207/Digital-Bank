@@ -1,0 +1,66 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary h sticky-top  justify-content-end">
+  <div class="container-fluid">
+    <a class="navbar-brand ml-5" href="#">
+      <img src="../../assets/img/logo.png" width="150" height="40" alt="">
+    </a>
+    <button class="navbar-toggler mr-3" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse ml-5" id="navbarSupportedContent">
+      <ul class="navbar-nav ms-auto  fs-6 mb-2 mb-lg-0">
+        <!--Not Logged in-->
+        <li  class="nav-item" *ngIf ="!authService.isAuthenticated()" ><a class="nav-link active" [routerLink]="['/']">Home</a></li>
+            <li class="nav-item" *ngIf ="!authService.isAuthenticated()"><a class="nav-link active " [routerLink]="['/aboutUs']">About</a></li>
+            <li class="nav-item" *ngIf ="!authService.isAuthenticated()" ><a class="nav-link active " [routerLink]="['/news']">Latest News</a></li>
+            <li class="nav-item"  *ngIf ="!authService.isAuthenticated()"><a class="nav-link active " [routerLink]="['/answer-question']">FAQ</a></li>
+            <li class="nav-item" *ngIf ="!authService.isAuthenticated()" ><a class="nav-link  active" [routerLink]="['/contact']">Contact</a></li>
+            <li class="nav-item" *ngIf ="!authService.isAuthenticated()"><a class="nav-link active" [routerLink]="['/services']">Services</a></li>
+            <li class="nav-item"*ngIf ="authService.isAuthenticated()"><a class="nav-link active "[routerLink]="['/admin/employee']">Employee</a></li>
+            <li class="nav-item"*ngIf ="authService.isAuthenticated()" ><a class="nav-link active" [routerLink]="['/admin/dashboard']">Dashboard</a></li>
+        <!--Not Logged in-->
+
+
+
+
+
+        <li class="nav-item" *ngIf ="authService.isAuthenticated()">
+          <a class="nav-link active" aria-current="page" routerLink="/admin/home">Home</a>
+        </li>
+        <li class="nav-item"*ngIf ="authService.isAuthenticated()">
+          <a class="nav-link active" aria-current="page" routerLink="/admin/accounts">Accounts</a> <!--user-->
+        </li>
+        <li class="nav-item dropdown" *ngIf ="authService.isAuthenticated()">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown"
+             aria-expanded="false">
+            Customers
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="navbarDropdown" >
+            <li><a class="dropdown-item" routerLink="/admin/customers">Search Customers</a></li>
+            <li *ngIf="authService.hasRole('ADMIN')"><a class="dropdown-item" routerLink="/admin/new-customer">New Customers</a></li>
+          </ul>
+        </li>
+      </ul>
+      <a *ngIf="authService.isAuthenticated()"  class="navbar-brand" >
+        <img src="../../assets/mehdi.jpg"
+             alt="Avatar Logo" style="width:40px;" class="rounded-pill">
+      </a>
+      <ul class="navbar-nav" *ngIf ="authService.isAuthenticated()">
+        <li>
+          <a class="nav-link">
+            {{authService.authenticatedUser!.username}}
+          </a>
+        </li>
+        <li>
+          <a class="btn nav-link" (click)="handleLogout()">
+            <i class="bi bi-box-arrow-right"></i>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<router-outlet>
+
+</router-outlet>

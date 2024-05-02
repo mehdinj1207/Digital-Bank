@@ -1,0 +1,74 @@
+.dashboard {
+    font-family: 'Arial', sans-serif;
+    background-color: #f8f9fa;
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  }
+  
+  .header {
+    text-align: center;
+    margin-bottom: 30px;
+  }
+  
+  .title {
+    font-size: 36px;
+    font-weight: bold;
+    color: #007bff;
+  }
+  
+  .metrics {
+    display: flex;
+    justify-content: center;
+  }
+  
+  .metric {
+    margin: 0 20px;
+    text-align: center;
+  }
+  
+  .value {
+    font-size: 28px;
+    font-weight: bold;
+    color: #007bff;
+  }
+  
+  .label {
+    font-size: 16px;
+    color: #666;
+  }
+  
+  .main-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .overview-chart {
+    width: 100%;
+    margin-bottom: 30px;
+  }
+  
+  .secondary-charts {
+    width: 100%;
+  }
+  
+  .row {
+    display: flex;
+    flex-wrap: wrap;
+  }
+  
+  .col-md-6 {
+    width: 50%;
+  }
+  
+  .chart-container {
+    margin-bottom: 30px;
+  }
+  
+  canvas {
+    width: 100%;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  }
+  
